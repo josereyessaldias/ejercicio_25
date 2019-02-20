@@ -1,0 +1,45 @@
+<h1>Sales New</h1>
+
+<% if @sale.errors.any? %>
+    <div id="error_explanation">
+      <p><%= pluralize(@sale.errors.count, "error") %> impidió que esta venta se registrara:</p>
+
+      <ul>
+      <% @sale.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+<%= form_with model: @sale, local: true do |f| %>
+	
+	<%= f.label :cod, "Ingrese el código" %>
+	<%= f.number_field :cod %>
+	<br>
+	
+	<%= f.label :detail, "Detalle" %>
+	<%= f.text_area :detail %>
+	<br>
+
+	<%= f.label :category, "Categoría" %>
+	<%= f.text_area :category %>
+	<br>
+
+	<%= f.label :value, "Valor del producto" %>
+	<%= f.number_field :value %>
+	<br>
+
+	<%= f.label :discount, "Porcentaje de descuento aplicado" %>
+	<%= f.number_field :discount %>
+	<br>
+
+	<%= f.label "¿Exento de IVA" %>
+	<%= f.check_box :tax %>	
+	<br>
+
+	<%= f.submit "Enviar" %>
+	
+
+<% end %>
